@@ -22,6 +22,9 @@ function App() {
     fetch('/api/profile')
       .then(res => res.json())
       .then(data => {
+        console.log('Profile data loaded:', data)
+        console.log('Education data:', data?.education)
+        console.log('Projects data:', data?.projects)
         setProfileData(data)
         setTimeout(() => setLoading(false), 1500)
       })
@@ -58,8 +61,8 @@ function App() {
                 <About profile={profileData} />
                 <Skills skills={profileData?.skills} />
                 <Experience experience={profileData?.experience} />
-                <Projects projects={profileData?.projects} />
-                <Education education={profileData?.education} />
+                {profileData?.projects && <Projects projects={profileData.projects} />}
+                {profileData?.education && <Education education={profileData.education} />}
                 <Contact profile={profileData?.personal} />
               </>
             } />

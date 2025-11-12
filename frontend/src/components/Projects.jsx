@@ -6,7 +6,10 @@ import './Projects.css'
 const Projects = ({ projects }) => {
   const [ref, inView] = useInView({ threshold: 0.1 })
 
-  const projectList = projects || [
+  // Debug logging
+  console.log('Projects component received:', projects)
+
+  const projectList = projects && projects.length > 0 ? projects : [
     {
       id: 1,
       name: 'Cloud Infrastructure Automation',
@@ -16,6 +19,8 @@ const Projects = ({ projects }) => {
       github: ''
     }
   ]
+
+  console.log('Projects list to render:', projectList)
 
   return (
     <section id="projects" className="projects" ref={ref}>
