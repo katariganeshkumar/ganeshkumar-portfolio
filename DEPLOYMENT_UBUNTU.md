@@ -4,9 +4,11 @@ Complete guide for deploying the portfolio website to a fresh Ubuntu server.
 
 ## Server Information
 
-- **Host**: 103.194.228.36
+- **Host**: [Configure in .env.deploy]
 - **User**: root
 - **Domain**: www.ganeshkumar.me
+
+**Note**: Server credentials are stored in `.env.deploy` (gitignored). Copy `.env.deploy.example` to `.env.deploy` and fill in your server details.
 
 ## Prerequisites
 
@@ -378,6 +380,6 @@ If you encounter issues:
 ---
 
 **Deployment Date**: $(date)
-**Server IP**: 103.194.228.36
+**Server IP**: [Configure in .env.deploy]
 **Domain**: www.ganeshkumar.me
 

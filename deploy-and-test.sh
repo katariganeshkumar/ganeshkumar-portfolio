@@ -5,12 +5,25 @@
 
 set -e
 
-# Server Configuration
-SERVER_HOST="103.194.228.36"
-SERVER_USER="root"
-SERVER_PASS="r9AWATgbrUn4cxyh"
-DOMAIN="www.ganeshkumar.me"
-APP_DIR="/var/www/ganeshkumar-portfolio"
+# Load deployment configuration from .env.deploy
+if [ -f .env.deploy ]; then
+    export $(cat .env.deploy | grep -v '^#' | xargs)
+else
+    echo "❌ Error: .env.deploy file not found!"
+    echo "   Please copy .env.deploy.example to .env.deploy and fill in your credentials"
+    exit 1
+fi
+
+# Validate required variables
+if [ -z "$SERVER_HOST" ] || [ -z "$SERVER_USER" ] || [ -z "$SERVER_PASS" ]; then
+    echo "❌ Error: Missing required configuration in .env.deploy"
+    echo "   Required: SERVER_HOST, SERVER_USER, SERVER_PASS"
+    exit 1
+fi
+
+# Set defaults if not provided
+DOMAIN=${DOMAIN:-"www.ganeshkumar.me"}
+APP_DIR=${APP_DIR:-"/var/www/ganeshkumar-portfolio"}
 
 # Colors
 RED='\033[0;31m'

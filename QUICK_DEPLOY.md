@@ -14,7 +14,9 @@ cd frontend && npm run build && cd ..
 SSH into your server:
 
 ```bash
-ssh root@103.194.228.36
+# Load your server IP from .env.deploy
+source .env.deploy
+ssh $SERVER_USER@$SERVER_HOST
 ```
 
 Run the setup script:
@@ -106,6 +108,6 @@ pm2 restart portfolio
 
 ---
 
-**Server**: 103.194.228.36
+**Server**: [Configure in .env.deploy]
 **Domain**: www.ganeshkumar.me
 

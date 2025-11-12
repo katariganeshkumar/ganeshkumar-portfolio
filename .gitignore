@@ -13,6 +13,10 @@ build/
 .env
 .env.local
 .env.production
+.env.deploy
+*.env.deploy
+deployment.config
+deploy.config
 
 # IDE
 .vscode/

@@ -4,8 +4,14 @@
 
 set -e
 
-DOMAIN="www.ganeshkumar.me"
-SERVER_HOST="103.194.228.36"
+# Load deployment configuration from .env.deploy
+if [ -f .env.deploy ]; then
+    export $(cat .env.deploy | grep -v '^#' | xargs)
+fi
+
+# Set defaults if not provided
+DOMAIN=${DOMAIN:-"www.ganeshkumar.me"}
+SERVER_HOST=${SERVER_HOST:-""}
 
 echo "🔍 Verifying Website Functionality..."
 echo ""
