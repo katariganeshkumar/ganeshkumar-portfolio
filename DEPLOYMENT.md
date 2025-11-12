@@ -166,14 +166,14 @@ pm2 restart portfolio
 
 ### Port Already in Use
 ```bash
-sudo lsof -i :5000
+sudo lsof -i :5001
 sudo kill -9 <PID>
 ```
 
 ### Nginx 502 Bad Gateway
 - Check if Node.js app is running: `pm2 status`
 - Check backend logs: `pm2 logs portfolio`
-- Verify port 5000 is accessible
+- Verify port 5001 is accessible
 
 ### SSL Certificate Issues
 ```bash

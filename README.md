@@ -67,7 +67,7 @@ Or run separately:
 # Frontend (port 3000)
 npm run dev:frontend
 
-# Backend (port 5000)
+# Backend (port 5001)
 npm run dev:backend
 ```
 
@@ -105,7 +105,7 @@ server {
     server_name www.ganeshkumar.me ganeshkumar.me;
 
     location / {
-        proxy_pass http://localhost:5000;
+        proxy_pass http://localhost:5001;
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection 'upgrade';
