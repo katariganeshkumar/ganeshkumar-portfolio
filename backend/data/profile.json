@@ -1,0 +1,107 @@
+{
+  "personal": {
+    "name": "Ganesh Kumar",
+    "title": "Senior DevOps Engineer",
+    "company": "Persistent Systems",
+    "email": "katariganeshkumar@gmail.com",
+    "location": "India",
+    "bio": "Experienced Senior DevOps Engineer with expertise in containerization, orchestration, and cloud infrastructure. Passionate about automation, CI/CD pipelines, and scalable system architectures.",
+    "avatar": "/generated-image.png",
+    "social": {
+      "linkedin": "https://linkedin.com/in/ganeshkumar",
+      "github": "https://github.com/ganeshkumar",
+      "twitter": ""
+    }
+  },
+  "skills": {
+    "core": [
+      "Docker",
+      "Kubernetes",
+      "CI/CD",
+      "Cloud Infrastructure",
+      "Automation",
+      "Monitoring & Logging"
+    ],
+    "technologies": [
+      "Docker",
+      "Kubernetes",
+      "Git",
+      "Jenkins",
+      "GitLab CI",
+      "GitHub Actions",
+      "Terraform",
+      "Ansible",
+      "AWS",
+      "Azure",
+      "Linux",
+      "Bash",
+      "Python",
+      "Node.js",
+      "Prometheus",
+      "Grafana",
+      "ELK Stack"
+    ],
+    "categories": {
+      "containerization": ["Docker", "Podman", "Containerd"],
+      "orchestration": ["Kubernetes", "Docker Swarm", "Nomad"],
+      "ci_cd": ["Jenkins", "GitLab CI", "GitHub Actions", "CircleCI"],
+      "iac": ["Terraform", "Ansible", "CloudFormation"],
+      "cloud": ["AWS", "Azure", "GCP"],
+      "monitoring": ["Prometheus", "Grafana", "ELK Stack", "Datadog"],
+      "version_control": ["Git", "SVN", "Mercurial"]
+    }
+  },
+  "experience": [
+    {
+      "id": 1,
+      "title": "Senior DevOps Engineer",
+      "company": "Persistent Systems",
+      "location": "India",
+      "period": "2020 - Present",
+      "description": "Leading DevOps initiatives and infrastructure automation projects.",
+      "achievements": [
+        "Designed and implemented CI/CD pipelines reducing deployment time by 60%",
+        "Managed Kubernetes clusters serving production workloads",
+        "Automated infrastructure provisioning using Terraform and Ansible",
+        "Implemented monitoring and alerting solutions using Prometheus and Grafana"
+      ],
+      "technologies": ["Kubernetes", "Docker", "Jenkins", "Terraform", "AWS"]
+    }
+  ],
+  "projects": [
+    {
+      "id": 1,
+      "name": "Cloud Infrastructure Automation",
+      "description": "Automated cloud infrastructure provisioning and management",
+      "technologies": ["Terraform", "AWS", "Kubernetes"],
+      "link": "",
+      "github": ""
+    },
+    {
+      "id": 2,
+      "name": "CI/CD Pipeline Optimization",
+      "description": "Optimized CI/CD pipelines for faster deployments",
+      "technologies": ["Jenkins", "Docker", "GitLab CI"],
+      "link": "",
+      "github": ""
+    }
+  ],
+  "education": [
+    {
+      "degree": "Bachelor's Degree",
+      "field": "Computer Science / Engineering",
+      "institution": "",
+      "year": ""
+    }
+  ],
+  "certifications": [],
+  "theme": {
+    "primaryColor": "#00D9FF",
+    "secondaryColor": "#0066FF",
+    "accentColor": "#FF6B6B",
+    "backgroundColor": "#0A0E27",
+    "textColor": "#FFFFFF",
+    "gradient": "linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
+  }
+}
+
