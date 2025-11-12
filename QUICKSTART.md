@@ -6,15 +6,23 @@ Get your portfolio website up and running in minutes!
 
 ### Troubleshooting Port Issues
 
-If you encounter `EADDRINUSE: address already in use :::5000` error:
+**⚠️ Important:** macOS AirPlay Receiver uses port 5000 by default. 
 
-**Quick Fix:**
+**Option 1: Disable AirPlay Receiver (Recommended)**
+1. Open System Settings → General → AirDrop & Handoff
+2. Turn OFF "AirPlay Receiver"
+3. Restart your terminal and try `npm start` again
+
+**Option 2: Use a Different Port**
+The backend is now configured to use port **5001** by default to avoid conflicts.
+
+If you still encounter port conflicts:
 ```bash
-# Kill process on port 5000
-lsof -ti:5000 | xargs kill -9
+# Kill process on specific port
+lsof -ti:5001 | xargs kill -9
 
-# Or use a different port
-PORT=5001 npm start
+# Or use a custom port
+PORT=5002 npm start
 ```
 
 ### 1. Install Dependencies
