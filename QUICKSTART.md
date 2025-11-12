@@ -4,6 +4,19 @@ Get your portfolio website up and running in minutes!
 
 ## 🚀 Local Development
 
+### Troubleshooting Port Issues
+
+If you encounter `EADDRINUSE: address already in use :::5000` error:
+
+**Quick Fix:**
+```bash
+# Kill process on port 5000
+lsof -ti:5000 | xargs kill -9
+
+# Or use a different port
+PORT=5001 npm start
+```
+
 ### 1. Install Dependencies
 ```bash
 npm run install:all
