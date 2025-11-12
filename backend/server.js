@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import compression from 'compression';
-import { readFileSync } from 'fs';
+import { readFileSync, existsSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 
@@ -20,9 +20,6 @@ app.use(compression());
 app.use(cors());
 app.use(express.json());
 
-// Serve static files from frontend build
-app.use(express.static(join(__dirname, '../frontend/dist')));
-
 // API Routes
 app.get('/api/profile', (req, res) => {
   try {
@@ -39,10 +36,25 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
 
-// Serve React app for all other routes
-app.get('*', (req, res) => {
-  res.sendFile(join(__dirname, '../frontend/dist/index.html'));
-});
+// Serve static files from frontend build (if exists)
+const distPath = join(__dirname, '../frontend/dist');
+if (existsSync(distPath)) {
+  app.use(express.static(distPath));
+  
+  // Serve React app for all other routes
+  app.get('*', (req, res) => {
+    res.sendFile(join(distPath, 'index.html'));
+  });
+} else {
+  // Development mode - frontend not built
+  app.get('*', (req, res) => {
+    res.status(503).json({ 
+      error: 'Frontend not built', 
+      message: 'Please run "npm run build" or "npm run build:frontend" to build the frontend',
+      hint: 'For development, use "npm run dev" instead'
+    });
+  });
+}
 
 app.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`);
