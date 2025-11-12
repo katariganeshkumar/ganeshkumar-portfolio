@@ -14,7 +14,17 @@ const PORT = process.env.PORT || 5001;
 
 // Middleware
 app.use(helmet({
-  contentSecurityPolicy: false, // Adjust for production
+  contentSecurityPolicy: {
+    directives: {
+      defaultSrc: ["'self'"],
+      scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'", "https://fonts.googleapis.com"],
+      styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
+      fontSrc: ["'self'", "https://fonts.gstatic.com"],
+      imgSrc: ["'self'", "data:", "blob:", "https://raw.githack.com", "https://raw.githubusercontent.com"],
+      connectSrc: ["'self'", "https://raw.githack.com", "https://raw.githubusercontent.com", "https://cdn.jsdelivr.net", "https://unpkg.com"],
+    },
+  },
+  crossOriginEmbedderPolicy: false,
 }));
 app.use(compression());
 app.use(cors());

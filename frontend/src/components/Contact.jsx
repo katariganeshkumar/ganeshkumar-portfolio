@@ -145,7 +145,7 @@ const Contact = ({ profile }) => {
       >
         <div className="container">
           <p>&copy; {new Date().getFullYear()} Ganesh Kumar. All rights reserved.</p>
-          <p className="footer-note">Built with React, Three.js, and passion for DevOps</p>
+          <p className="footer-note">Built with ReactJS, Three.js, and ExpressJS</p>
         </div>
       </motion.footer>
     </section>

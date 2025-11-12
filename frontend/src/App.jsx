@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { Canvas } from '@react-three/fiber'
-import { OrbitControls, PerspectiveCamera, Environment } from '@react-three/drei'
+import { OrbitControls, PerspectiveCamera } from '@react-three/drei'
 import Header from './components/Header'
 import Hero from './components/Hero'
 import About from './components/About'
@@ -47,7 +47,7 @@ function App() {
             <OrbitControls enableZoom={false} enablePan={false} autoRotate autoRotateSpeed={0.5} />
             <ambientLight intensity={0.5} />
             <pointLight position={[10, 10, 10]} />
-            <Environment preset="night" />
+            <directionalLight position={[5, 5, 5]} intensity={1} />
             <Background3D />
           </Canvas>
         </div>
