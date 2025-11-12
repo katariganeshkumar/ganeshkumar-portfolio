@@ -23,7 +23,9 @@ Complete guide for deploying the portfolio website to a fresh Ubuntu server.
 SSH into your server and run:
 
 ```bash
-ssh root@103.194.228.36
+# Load your server IP from .env.deploy
+source .env.deploy
+ssh $SERVER_USER@$SERVER_HOST
 ```
 
 Then run the setup script:
