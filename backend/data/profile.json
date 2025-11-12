@@ -9,8 +9,7 @@
     "avatar": "/generated-image.png",
     "social": {
       "linkedin": "https://linkedin.com/in/ganeshkumar",
-      "github": "https://github.com/ganeshkumar",
-      "twitter": ""
+      "github": "https://github.com/ganeshkumar"
     }
   },
   "skills": {
@@ -54,11 +53,16 @@
   "experience": [
     {
       "id": 1,
-      "title": "Senior DevOps Engineer",
+      "title": "Engineering Lead - DevOps",
       "company": "Persistent Systems",
       "location": "India",
       "period": "2020 - Present",
       "description": "Leading DevOps initiatives and infrastructure automation projects.",
+      "responsibilities": [
+        "Responsible for the design and implementation of the CI/CD pipelines for the entire organization",
+        "Responsible for the design and implementation of the infrastructure automation projects for the entire organization",
+        "Responsible for the design and implementation of the monitoring and alerting solutions for the entire organization"
+      ],
       "achievements": [
         "Designed and implemented CI/CD pipelines reducing deployment time by 60%",
         "Managed Kubernetes clusters serving production workloads",
@@ -66,32 +70,55 @@
         "Implemented monitoring and alerting solutions using Prometheus and Grafana"
       ],
       "technologies": ["Kubernetes", "Docker", "Jenkins", "Terraform", "AWS"]
+    },
+    {
+      "id": 2,
+      "title": "Release Engineer",
+      "company": "clover infotech",
+      "location": "India",
+      "period": "2019 - 2021",
+      "description": "Responsible for the release engineering of the entire organization.",
+      "achievements": [
+        "Responsible for the release engineering of the entire organization.",
+        "Responsible for the design and implementation of the CI/CD pipelines for the entire organization",
+        "Responsible for the design and implementation of the infrastructure automation projects for the entire organization",
+        "Responsible for the design and implementation of the monitoring and alerting solutions for the entire organization"
+      ],
+      "technologies": ["Jenkins", "Docker", "GitLab CI/CD", "Ibm urban code deploy"]
     }
   ],
   "projects": [
     {
       "id": 1,
-      "name": "Cloud Infrastructure Automation",
-      "description": "Automated cloud infrastructure provisioning and management",
-      "technologies": ["Terraform", "AWS", "Kubernetes"],
-      "link": "",
-      "github": ""
+      "name": "Monumet bank",
+      "description": "Monumet bank is a bank that provides banking services to the customers.",
+      "technologies": ["Jenkins", "Docker", "GitLab CI/CD", "Mambu","aws","Kubernetes","nginx"]
     },
     {
       "id": 2,
-      "name": "CI/CD Pipeline Optimization",
-      "description": "Optimized CI/CD pipelines for faster deployments",
-      "technologies": ["Jenkins", "Docker", "GitLab CI"],
-      "link": "",
-      "github": ""
+      "name": "cisco",
+      "description": "cisco netowrk devices automation and performance monitoring using prometheus and grafana, for project inside-candela,cylon,susi engine,nso,cbp ic",
+      "technologies": ["Jenkins", "Docker", "GitLab CI/CD", "gitlab runner", "grafana", "prometheus","cisco hybrid cloud"]
+    },
+    {
+      "id": 3,
+      "name": "Yesbank",
+      "description": "Yesbank is a bank that provides banking services to the customers.",
+      "technologies": ["Jenkins", "Docker", "ibm urban code deploy","aws","azure"]
     }
   ],
   "education": [
     {
       "degree": "Bachelor's Degree",
       "field": "Computer Science / Engineering",
-      "institution": "",
-      "year": ""
+      "institution": "JNTU Anantapur",
+      "year": "2010-2014"
+    },
+    {
+      "degree": "Master's Degree",
+      "field": "Computer Science / Engineering",
+      "institution": "JNTU Anantapur",
+      "year": "2014-2016"
     }
   ],
   "certifications": [],

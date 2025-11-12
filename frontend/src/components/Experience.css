@@ -85,9 +85,21 @@
   margin-bottom: 1.5rem;
 }
 
+.responsibilities-section,
+.achievements-section {
+  margin-bottom: 1.5rem;
+}
+
+.section-subheading {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 0.75rem;
+}
+
 .achievements-list {
   list-style: none;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0;
 }
 
 .achievements-list li {

@@ -55,7 +55,9 @@ const Projects = ({ projects }) => {
                   )}
                 </div>
               </div>
-              <p className="project-description">{project.description}</p>
+              {project.description && (
+                <p className="project-description">{project.description}</p>
+              )}
               <div className="project-technologies">
                 {project.technologies.map((tech) => (
                   <span key={tech} className="tech-badge">

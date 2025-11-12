@@ -67,19 +67,39 @@ const Experience = ({ experience }) => {
                   </div>
                 </div>
                 <p className="experience-description">{exp.description}</p>
+                {exp.responsibilities && exp.responsibilities.length > 0 && (
+                  <div className="responsibilities-section">
+                    <h4 className="section-subheading">Key Responsibilities:</h4>
+                    <ul className="achievements-list">
+                      {exp.responsibilities.map((responsibility, idx) => (
+                        <motion.li
+                          key={`resp-${idx}`}
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={inView ? { opacity: 1, x: 0 } : {}}
+                          transition={{ delay: index * 0.2 + idx * 0.1 }}
+                        >
+                          {responsibility}
+                        </motion.li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
                 {exp.achievements && exp.achievements.length > 0 && (
-                  <ul className="achievements-list">
-                    {exp.achievements.map((achievement, idx) => (
-                      <motion.li
-                        key={idx}
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={inView ? { opacity: 1, x: 0 } : {}}
-                        transition={{ delay: index * 0.2 + idx * 0.1 }}
-                      >
-                        {achievement}
-                      </motion.li>
-                    ))}
-                  </ul>
+                  <div className="achievements-section">
+                    <h4 className="section-subheading">Key Achievements:</h4>
+                    <ul className="achievements-list">
+                      {exp.achievements.map((achievement, idx) => (
+                        <motion.li
+                          key={`ach-${idx}`}
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={inView ? { opacity: 1, x: 0 } : {}}
+                          transition={{ delay: index * 0.2 + idx * 0.1 + (exp.responsibilities?.length || 0) * 0.1 }}
+                        >
+                          {achievement}
+                        </motion.li>
+                      ))}
+                    </ul>
+                  </div>
                 )}
                 {exp.technologies && exp.technologies.length > 0 && (
                   <div className="technologies-tags">

@@ -8,6 +8,7 @@ import About from './components/About'
 import Skills from './components/Skills'
 import Experience from './components/Experience'
 import Projects from './components/Projects'
+import Education from './components/Education'
 import Contact from './components/Contact'
 import Background3D from './components/Background3D'
 import LoadingScreen from './components/LoadingScreen'
@@ -58,6 +59,7 @@ function App() {
                 <Skills skills={profileData?.skills} />
                 <Experience experience={profileData?.experience} />
                 <Projects projects={profileData?.projects} />
+                <Education education={profileData?.education} />
                 <Contact profile={profileData?.personal} />
               </>
             } />

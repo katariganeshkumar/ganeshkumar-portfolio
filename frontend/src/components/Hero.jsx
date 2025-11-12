@@ -27,7 +27,7 @@ const Hero = ({ profile }) => {
             animate={inView ? { opacity: 1, scale: 1 } : {}}
             transition={{ delay: 0.2 }}
           >
-            <span>Senior DevOps Engineer</span>
+            <span>{profile?.title || 'Senior DevOps Engineer'}</span>
           </motion.div>
 
           <h1 className="hero-title">
