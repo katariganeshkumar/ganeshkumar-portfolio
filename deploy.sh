@@ -1,50 +1,50 @@
 #!/bin/bash
 
-# Deployment script for Ubuntu server
-# Run with: bash deploy.sh
+# Quick Deployment Script
+# This script helps deploy the portfolio to the Ubuntu server
 
-echo "🚀 Starting deployment..."
+set -e
 
-# Colors for output
-GREEN='\033[0;32m'
-YELLOW='\033[1;33m'
-NC='\033[0m' # No Color
+SERVER_HOST="103.194.228.36"
+SERVER_USER="root"
+APP_DIR="/var/www/ganeshkumar-portfolio"
 
-# Check if Node.js is installed
-if ! command -v node &> /dev/null; then
-    echo -e "${YELLOW}Node.js not found. Installing...${NC}"
-    curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
-    sudo apt-get install -y nodejs
+echo "🚀 Portfolio Deployment Script"
+echo "================================"
+echo ""
+
+# Check if we're in the right directory
+if [ ! -f "package.json" ]; then
+    echo "❌ Error: Please run this script from the project root directory"
+    exit 1
 fi
 
-# Check if PM2 is installed
-if ! command -v pm2 &> /dev/null; then
-    echo -e "${YELLOW}PM2 not found. Installing...${NC}"
-    sudo npm install -g pm2
-fi
-
-# Install dependencies
-echo -e "${GREEN}Installing dependencies...${NC}"
-npm run install:all
-
-# Build project
-echo -e "${GREEN}Building project...${NC}"
+# Build frontend
+echo "📦 Building frontend..."
+cd frontend
 npm run build
+cd ..
 
-# Copy image to public folder
-if [ -f "generated-image.png" ]; then
-    echo -e "${GREEN}Copying image to public folder...${NC}"
-    cp generated-image.png frontend/public/
-fi
+# Create deployment package
+echo "📦 Creating deployment package..."
+DEPLOY_DIR="/tmp/portfolio-deploy-$(date +%s)"
+mkdir -p $DEPLOY_DIR
 
-# Start/restart PM2 process
-echo -e "${GREEN}Starting server with PM2...${NC}"
-cd backend
-pm2 delete portfolio 2>/dev/null || true
-pm2 start server.js --name portfolio
-pm2 save
+# Copy necessary files
+cp -r backend $DEPLOY_DIR/
+cp -r frontend/dist $DEPLOY_DIR/frontend-dist
+cp package.json $DEPLOY_DIR/
+cp .gitignore $DEPLOY_DIR/
 
-echo -e "${GREEN}✅ Deployment complete!${NC}"
-echo -e "${YELLOW}Check status with: pm2 status${NC}"
-echo -e "${YELLOW}View logs with: pm2 logs portfolio${NC}"
-
+echo "📤 Ready to deploy!"
+echo ""
+echo "Option 1: Manual deployment (recommended)"
+echo "  1. SSH to server: ssh root@$SERVER_HOST"
+echo "  2. Run: bash <(curl -s https://raw.githubusercontent.com/katariganeshkumar/ganeshkumar-portfolio/main/setup-server.sh)"
+echo "  3. Clone repo: cd $APP_DIR && git clone https://github.com/katariganeshkumar/ganeshkumar-portfolio.git ."
+echo "  4. Install & start: npm run install:all && npm run build:frontend && cd backend && pm2 start server.js --name portfolio"
+echo ""
+echo "Option 2: Automated deployment"
+echo "  Run: bash deploy-ubuntu.sh"
+echo ""
+echo "Deployment package created at: $DEPLOY_DIR"
