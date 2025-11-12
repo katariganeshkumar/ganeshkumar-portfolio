@@ -13,7 +13,7 @@ Complete guide for deploying the portfolio website to a fresh Ubuntu server.
 ## Prerequisites
 
 - SSH access to the server
-- Domain DNS pointing to server IP (103.194.228.36)
+- Domain DNS pointing to server IP (configure in .env.deploy)
 - Git repository access
 
 ## Step 1: Initial Server Setup
