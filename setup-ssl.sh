@@ -72,7 +72,7 @@ echo ""
 # Check DNS resolution
 echo -e "${BLUE}Step 3: Checking DNS resolution...${NC}"
 DNS_CHECK=$(run_remote "nslookup $DOMAIN 2>/dev/null | grep -A 2 'Name:' || echo 'DNS_CHECK_FAILED'")
-if echo "$DNS_CHECK" | grep -q "$SERVER_HOST\|103.194.228.36"; then
+if echo "$DNS_CHECK" | grep -q "$SERVER_HOST"; then
     echo -e "${GREEN}✅ DNS is pointing to server IP${NC}"
 elif echo "$DNS_CHECK" | grep -q "DNS_CHECK_FAILED"; then
     echo -e "${YELLOW}⚠️  Cannot verify DNS. Continuing anyway...${NC}"
