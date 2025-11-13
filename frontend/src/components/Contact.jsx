@@ -12,14 +12,36 @@ const Contact = ({ profile }) => {
     message: ''
   })
   const [submitted, setSubmitted] = useState(false)
+  const [error, setError] = useState('')
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    // Handle form submission
-    console.log('Form submitted:', formData)
-    setSubmitted(true)
-    setTimeout(() => setSubmitted(false), 3000)
-    setFormData({ name: '', email: '', message: '' })
+    setError('')
+    
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+      
+      const data = await response.json()
+      
+      if (response.ok) {
+        setSubmitted(true)
+        setTimeout(() => {
+          setSubmitted(false)
+          setFormData({ name: '', email: '', message: '' })
+        }, 3000)
+      } else {
+        setError(data.error || 'Failed to send message. Please try again.')
+      }
+    } catch (error) {
+      console.error('Error sending message:', error)
+      setError('Network error. Please check your connection and try again.')
+    }
   }
 
   const handleChange = (e) => {
@@ -124,11 +146,17 @@ const Contact = ({ profile }) => {
                 className="form-textarea"
               />
             </div>
+            {error && (
+              <div className="form-error">
+                {error}
+              </div>
+            )}
             <motion.button
               type="submit"
               className="form-submit"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              disabled={submitted}
             >
               <Send size={20} />
               {submitted ? 'Message Sent!' : 'Send Message'}

@@ -6,21 +6,9 @@ import './Projects.css'
 const Projects = ({ projects }) => {
   const [ref, inView] = useInView({ threshold: 0.1 })
 
-  // Debug logging
-  console.log('Projects component received:', projects)
-
-  const projectList = projects && projects.length > 0 ? projects : [
-    {
-      id: 1,
-      name: 'Cloud Infrastructure Automation',
-      description: 'Automated cloud infrastructure provisioning and management using Terraform and Ansible',
-      technologies: ['Terraform', 'AWS', 'Kubernetes'],
-      link: '',
-      github: ''
-    }
-  ]
-
-  console.log('Projects list to render:', projectList)
+  if (!projects || projects.length === 0) {
+    return null
+  }
 
   return (
     <section id="projects" className="projects" ref={ref}>
@@ -36,7 +24,7 @@ const Projects = ({ projects }) => {
         </motion.div>
 
         <div className="projects-grid">
-          {projectList.map((project, index) => (
+          {projects.map((project, index) => (
             <motion.div
               key={project.id}
               className="project-card"
@@ -70,22 +58,6 @@ const Projects = ({ projects }) => {
                   </span>
                 ))}
               </div>
-              <motion.div
-                className="project-overlay"
-                initial={{ opacity: 0 }}
-                whileHover={{ opacity: 1 }}
-              >
-                <div className="project-overlay-content">
-                  <motion.a
-                    href={project.link || project.github || '#'}
-                    className="project-button"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    View Project
-                  </motion.a>
-                </div>
-              </motion.div>
             </motion.div>
           ))}
         </div>

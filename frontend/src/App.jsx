@@ -9,9 +9,13 @@ import Skills from './components/Skills'
 import Experience from './components/Experience'
 import Projects from './components/Projects'
 import Education from './components/Education'
+import Certifications from './components/Certifications'
 import Contact from './components/Contact'
 import Background3D from './components/Background3D'
 import LoadingScreen from './components/LoadingScreen'
+import ErrorBoundary from './components/ErrorBoundary'
+import ScrollToTop from './components/ScrollToTop'
+import NotFound from './components/NotFound'
 import './App.css'
 
 function App() {
@@ -22,9 +26,9 @@ function App() {
     fetch('/api/profile')
       .then(res => res.json())
       .then(data => {
-        console.log('Profile data loaded:', data)
-        console.log('Education data:', data?.education)
-        console.log('Projects data:', data?.projects)
+        if (import.meta.env.DEV) {
+          console.log('Profile data loaded:', data)
+        }
         setProfileData(data)
         setTimeout(() => setLoading(false), 1500)
       })
@@ -39,37 +43,42 @@ function App() {
   }
 
   return (
-    <Router>
-      <div className="app">
-        <div className="canvas-container">
-          <Canvas>
-            <PerspectiveCamera makeDefault position={[0, 0, 5]} />
-            <OrbitControls enableZoom={false} enablePan={false} autoRotate autoRotateSpeed={0.5} />
-            <ambientLight intensity={0.5} />
-            <pointLight position={[10, 10, 10]} />
-            <directionalLight position={[5, 5, 5]} intensity={1} />
-            <Background3D />
-          </Canvas>
+    <ErrorBoundary>
+      <Router>
+        <div className="app">
+          <div className="canvas-container">
+            <Canvas>
+              <PerspectiveCamera makeDefault position={[0, 0, 5]} />
+              <OrbitControls enableZoom={false} enablePan={false} autoRotate autoRotateSpeed={0.5} />
+              <ambientLight intensity={0.5} />
+              <pointLight position={[10, 10, 10]} />
+              <directionalLight position={[5, 5, 5]} intensity={1} />
+              <Background3D />
+            </Canvas>
+          </div>
+          
+          <div className="content-wrapper">
+            <Header />
+            <Routes>
+              <Route path="/" element={
+                <>
+                  <Hero profile={profileData?.personal} />
+                  <About profile={profileData} />
+                  <Skills skills={profileData?.skills} />
+                  <Experience experience={profileData?.experience} />
+                  {profileData?.projects && <Projects projects={profileData.projects} />}
+                  {profileData?.education && <Education education={profileData.education} />}
+                  {profileData?.certifications && <Certifications certifications={profileData.certifications} />}
+                  <Contact profile={profileData?.personal} />
+                </>
+              } />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+            <ScrollToTop />
+          </div>
         </div>
-        
-        <div className="content-wrapper">
-          <Header />
-          <Routes>
-            <Route path="/" element={
-              <>
-                <Hero profile={profileData?.personal} />
-                <About profile={profileData} />
-                <Skills skills={profileData?.skills} />
-                <Experience experience={profileData?.experience} />
-                {profileData?.projects && <Projects projects={profileData.projects} />}
-                {profileData?.education && <Education education={profileData.education} />}
-                <Contact profile={profileData?.personal} />
-              </>
-            } />
-          </Routes>
-        </div>
-      </div>
-    </Router>
+      </Router>
+    </ErrorBoundary>
   )
 }
 

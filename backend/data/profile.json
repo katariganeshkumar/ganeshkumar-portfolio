@@ -121,7 +121,23 @@
       "year": "2014-2016"
     }
   ],
-  "certifications": [],
+  "certifications": [
+    {
+      "id": 1,
+      "name": " Bravo in Team Awards",
+      "issuer": "Persistent Systems",
+      "date": "2022",
+      "url": "https://www.persistent.com/awards"
+    },
+    {
+      "id": 2,
+      "name": "Docker Certified Associate (DCA)",
+      "issuer": "Docker",
+      "date": "2020",
+      "credentialId": "15563421",
+      "url": "https://www.simplilearn.com"
+    }
+  ],
   "theme": {
     "primaryColor": "#00D9FF",
     "secondaryColor": "#0066FF",

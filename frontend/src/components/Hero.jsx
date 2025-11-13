@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { ArrowDown, Github, Linkedin, Mail } from 'lucide-react'
+import { ArrowDown, Github, Linkedin, Mail, Download } from 'lucide-react'
 import TechIcons from './TechIcons'
 import TypedText from './TypedText'
 import './Hero.css'
@@ -81,6 +81,21 @@ const Hero = ({ profile }) => {
               whileTap={{ scale: 0.95 }}
             >
               View Projects
+            </motion.a>
+            <motion.a
+              href="/resume.pdf"
+              download
+              className="btn btn-outline"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={(e) => {
+                // If resume.pdf doesn't exist, prevent download and show message
+                e.preventDefault()
+                alert('Resume download will be available soon. Please contact me directly for my resume.')
+              }}
+            >
+              <Download size={18} />
+              Resume
             </motion.a>
           </motion.div>
 

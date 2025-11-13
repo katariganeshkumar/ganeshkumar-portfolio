@@ -8,12 +8,7 @@ const Education = ({ education }) => {
 
   const educationList = education || []
 
-  // Debug logging
-  console.log('Education component received:', education)
-  console.log('Education list:', educationList)
-
   if (!educationList || educationList.length === 0) {
-    console.warn('Education component: No education data provided')
     return null
   }
 

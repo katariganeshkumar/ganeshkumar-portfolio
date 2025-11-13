@@ -107,6 +107,17 @@
   background: rgba(0, 217, 255, 0.1);
 }
 
+.btn-outline {
+  background: transparent;
+  color: var(--text-primary);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.btn-outline:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
 .hero-social {
   display: flex;
   gap: 1.5rem;
